@@ -12,6 +12,7 @@
 
 int ledstate = LOW;
 void setup() {
+  Serial.begin(9600);
   pinMode(A1, OUTPUT);
 }
 
@@ -19,8 +20,9 @@ void setup() {
 void loop() {
   // read the input on analog pin 0:
   int sensorValue = analogRead(A0);
-  
-  if(sensorValue > 1){
+  float voltage = sensorValue * (5000 / 1023.0);
+  Serial.println(sensorValue);
+  if(sensorValue > 15){
     ledstate = HIGH;
     }
     else{
